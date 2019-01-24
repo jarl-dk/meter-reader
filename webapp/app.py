@@ -2,8 +2,7 @@
 # -*- coding: utf-8 -*-
 import os
 
-from flask import Flask, render_template
-
+from flask import Flask, render_template, send_from_directory
 
 app = Flask(__name__)
 
@@ -13,7 +12,9 @@ def index():
 
 @app.route('/billeder/<file_name>')
 def billede(file_name):
-    return render_template('pic.html', file_name=file_name)
+    return send_from_directory('/home/toke/Pictures', file_name)
+
+
 
 @app.route('/billeder')
 def billeder():
