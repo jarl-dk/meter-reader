@@ -4,6 +4,8 @@ import os
 
 from flask import Flask, render_template, send_from_directory
 
+PICTURES_DIR = '/home/toke/Pictures'
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -12,14 +14,14 @@ def index():
 
 @app.route('/billeder/<file_name>')
 def billede(file_name):
-    return send_from_directory('/home/toke/Pictures', file_name)
+    return send_from_directory(PICTURES_DIR, file_name)
 
 
 
 @app.route('/billeder')
 def billeder():
     file_names = []
-    with os.scandir('/home/toke/Pictures') as it:
+    with os.scandir(PICTURES_DIR) as it:
         for entry in it:
             if not entry.name.startswith('.') and entry.is_file():
                 file_names.append(entry.name)
