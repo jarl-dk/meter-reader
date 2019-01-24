@@ -11,6 +11,10 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+@app.route('/billeder/<file_name>')
+def billede(file_name):
+    return render_template('pic.html', file_name=file_name)
+
 @app.route('/billeder')
 def billeder():
     file_names = []
@@ -19,6 +23,9 @@ def billeder():
             if not entry.name.startswith('.') and entry.is_file():
                 file_names.append(entry.name)
     return render_template('billeder.html', html_file_names=file_names)
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
