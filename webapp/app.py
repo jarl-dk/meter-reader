@@ -4,7 +4,7 @@ import os
 
 from flask import Flask, render_template, send_from_directory
 
-PICTURES_DIR = f"{os.environ['HOME']}/Pictures"
+PICTURES_DIR = os.environ['HOME'] + "/Pictures"
 
 app = Flask(__name__)
 
