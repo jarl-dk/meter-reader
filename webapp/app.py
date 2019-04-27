@@ -21,10 +21,9 @@ def billede(file_name):
 @app.route('/billeder')
 def billeder():
     file_names = []
-    with os.scandir(PICTURES_DIR) as it:
-        for entry in it:
-            if not entry.name.startswith('.') and entry.is_file():
-                file_names.append(entry.name)
+    for entry in os.scandir(PICTURES_DIR):
+        if not entry.name.startswith('.') and entry.is_file():
+            file_names.append(entry.name)
     return render_template('billeder.html', html_file_names=file_names)
 
 
