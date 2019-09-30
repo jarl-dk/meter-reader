@@ -7,7 +7,7 @@
 <body>
 <span style="font-family: Courier">Her er et listen af billeder</span>
 <ul>
-    {% for file_name in html_file_names %}
+    {% for file_name in html_file_names|sort() %}
 
     <li>
     <a href="billeder/{{ file_name }}">{{ file_name }}</a>
